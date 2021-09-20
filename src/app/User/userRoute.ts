@@ -1,6 +1,4 @@
-import {Request, Response} from 'express'
+const user = require('./userController');
 module.exports = function (app:any) {
-    app.get('/', (req: Request, res: Response) => {
-        res.send({"message" : "Hello"})
-    })
+    app.get('/', user.selectUser);
 }

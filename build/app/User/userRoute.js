@@ -1,7 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+const user = require('./userController');
 module.exports = function (app) {
-    app.get('/', (req, res) => {
-        res.send({ "message": "Hello" });
-    });
+    app.get('/', user.selectUser);
 };

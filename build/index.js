@@ -1,5 +1,9 @@
 "use strict";
 const app = require('./config/express');
-app().listen(3000, () => {
-    console.log('start typescript');
+let PORT = 3000;
+if (process.env.NODE_ENV === "dev") {
+    PORT = 9000;
+}
+app().listen(PORT, () => {
+    console.log(`${process.env.NODE_ENV} : ${PORT}`);
 });
