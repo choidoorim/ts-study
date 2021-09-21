@@ -1,10 +1,11 @@
 import express from "express";
 
 module.exports = function () {
-    const app = express();
+    const app: express.Application = express();
     app.use(express.json())
-
-    require('../app/User/userRoute')(app);
+    const userRoute: express.Router = require('../app/User/userRoute');
+    app.use('/app/user', userRoute);
+    // require('../app/User/userRoute')(app);
 
     return app;
 }
