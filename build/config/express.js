@@ -7,6 +7,8 @@ const express_1 = __importDefault(require("express"));
 module.exports = function () {
     const app = (0, express_1.default)();
     app.use(express_1.default.json());
-    require('../app/User/userRoute')(app);
+    const userRoute = require('../app/User/userRoute');
+    app.use('/app/user', userRoute);
+    // require('../app/User/userRoute')(app);
     return app;
 };

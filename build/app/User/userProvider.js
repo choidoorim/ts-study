@@ -29,12 +29,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.selectUser = void 0;
-const userProvider = __importStar(require("./userProvider"));
-const selectUser = function (req, res) {
+const database_1 = require("../../config/database");
+const userDao = __importStar(require("./userDao"));
+const selectUser = function (userIdx) {
     return __awaiter(this, void 0, void 0, function* () {
-        const userIdx = Number(req.params.userId);
-        const selectUserResult = yield userProvider.selectUser(userIdx);
-        return res.send(selectUserResult);
+        const connection = yield database_1.pool.getConnection();
+        try {
+            yield connection.beginTransaction();
+            const result = yield userDao.selectUserDao(connection, userIdx);
+            yield connection.commit();
+            return result;
+        }
+        catch (err) {
+            yield connection.rollback();
+            console.log(err);
+        }
+        finally {
+            connection.release();
+        }
     });
 };
 exports.selectUser = selectUser;
