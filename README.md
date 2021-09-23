@@ -1,5 +1,5 @@
 # ts-study
-##typescript Study
+## typescript Study
 
 ### Controller, Service, Dao
 - Controller : 요청을 받아 해당 요청에 맞는 데이터를 Service 에 주입하는 역할
