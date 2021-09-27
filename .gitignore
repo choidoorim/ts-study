@@ -1,3 +1,4 @@
 src/config/database.ts
 build/config/database.js
 ./package-lock.json
+node_modules
