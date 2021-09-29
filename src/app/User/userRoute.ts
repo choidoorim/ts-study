@@ -1,4 +1,4 @@
-import * as user from "./userController"
+import user from "./userController"
 import * as express from 'express'
 const router :express.Router = express.Router();
 

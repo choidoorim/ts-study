@@ -1,5 +1,5 @@
 import {pool} from "../../config/database";
-import * as userDao from "./userDao";
+import userDao from "./userDao";
 
 const selectUser: Function = async function (userIdx: Number) {
     const connection: any = await pool.getConnection();
@@ -17,4 +17,4 @@ const selectUser: Function = async function (userIdx: Number) {
     }
 }
 
-export {selectUser}
+export default {selectUser}
